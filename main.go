@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sensu-community/sensu-plugin-sdk/sensu"
 	"github.com/sensu/sensu-go/types"
+	"github.com/sensu/sensu-plugin-sdk/sensu"
 	"github.com/shirou/gopsutil/v3/cpu"
 )
 
@@ -26,8 +26,8 @@ var (
 		},
 	}
 
-	options = []*sensu.PluginConfigOption{
-		{
+	options = []sensu.ConfigOption{
+		&sensu.PluginConfigOption[float64]{
 			Path:      "critical",
 			Argument:  "critical",
 			Shorthand: "c",
@@ -35,7 +35,7 @@ var (
 			Usage:     "Critical threshold for overall CPU usage",
 			Value:     &plugin.Critical,
 		},
-		{
+		&sensu.PluginConfigOption[float64]{
 			Path:      "warning",
 			Argument:  "warning",
 			Shorthand: "w",
@@ -43,7 +43,7 @@ var (
 			Usage:     "Warning threshold for overall CPU usage",
 			Value:     &plugin.Warning,
 		},
-		{
+		&sensu.PluginConfigOption[int]{
 			Path:      "sample-interval",
 			Argument:  "sample-interval",
 			Shorthand: "s",
@@ -55,7 +55,7 @@ var (
 )
 
 func main() {
-	check := sensu.NewGoCheck(&plugin.PluginConfig, options, checkArgs, executeCheck, false)
+	check := sensu.NewCheck(&plugin.PluginConfig, options, checkArgs, executeCheck, false)
 	check.Execute()
 }
 
