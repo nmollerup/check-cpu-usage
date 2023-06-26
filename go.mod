@@ -3,9 +3,8 @@ module github.com/nixwiz/check-cpu-usage
 go 1.20
 
 require (
-	github.com/sensu/sensu-go/api/core/v2 v2.16.0
-	github.com/sensu/sensu-go/types v0.12.0
-	github.com/sensu/sensu-plugin-sdk v0.18.0
+	github.com/sensu/sensu-go/api/core/v2 v2.14.0
+	github.com/sensu/sensu-plugin-sdk v0.16.0
 	github.com/shirou/gopsutil/v3 v3.23.5
 	github.com/stretchr/testify v1.8.4
 )
@@ -34,7 +33,8 @@ require (
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/sensu/core/v2 v2.16.1 // indirect
 	github.com/sensu/sensu-api-tools v0.1.0 // indirect
-	github.com/sensu/sensu-licensing/v2 v2.2.1 // indirect
+	github.com/sensu/sensu-go/types v0.12.0 // indirect
+	github.com/sensu/sensu-licensing v0.1.2 // indirect
 	github.com/shoenig/go-m1cpu v0.1.6 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
