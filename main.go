@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/sensu/sensu-go/types"
+	corev2 "github.com/sensu/sensu-go/api/core/v2"
 	"github.com/sensu/sensu-plugin-sdk/sensu"
 	"github.com/shirou/gopsutil/v3/cpu"
 )
@@ -59,7 +59,7 @@ func main() {
 	check.Execute()
 }
 
-func checkArgs(event *types.Event) (int, error) {
+func checkArgs(event *corev2.Event) (int, error) {
 	if plugin.Critical == 0 {
 		return sensu.CheckStateWarning, fmt.Errorf("--critical is required")
 	}
@@ -75,7 +75,7 @@ func checkArgs(event *types.Event) (int, error) {
 	return sensu.CheckStateOK, nil
 }
 
-func executeCheck(event *types.Event) (int, error) {
+func executeCheck(event *corev2.Event) (int, error) {
 	start, err := cpu.Times(false)
 	if err != nil {
 		return sensu.CheckStateCritical, fmt.Errorf("Error obtaining CPU timings: %v", err)
